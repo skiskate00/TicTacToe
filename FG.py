@@ -1,4 +1,3 @@
-# Sabrina's stuff
 # coding: utf-8
 def fgfd(length):
     fred.forward(length)
