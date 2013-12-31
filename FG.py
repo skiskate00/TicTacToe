@@ -1,4 +1,27 @@
 # coding: utf-8
+
+def main():
+    s=turtle.Screen()
+    s.clearscreen()
+    global fred
+    global george
+    fred = turtle.Turtle()
+    george = turtle.Turtle()
+    fred.color("green")
+    george.color("purple")
+    fred.shape("turtle")
+    george.shape("turtle")
+    fred.up()
+    george.up()
+    fred.goto(20,20)
+    george.goto(0,0)
+    fred.down()
+    george.down()
+    drawgrid()
+    global xturn
+    xturn = True
+    s.onclick(handleclick)
+    
 def fgfd(length):
     fred.forward(length)
     george.forward(length)
@@ -46,25 +69,7 @@ def fgmv(x,y):
     george.down()
     fred.down()
     
-def main():
-    s=turtle.Screen()
-    s.clearscreen()
-    fred = turtle.Turtle()
-    george = turtle.Turtle()
-    fred.color("green")
-    george.color("purple")
-    fred.shape("turtle")
-    george.shape("turtle")
-    fred.up()
-    george.up()
-    fred.goto(20,20)
-    george.goto(0,0)
-    fred.down()
-    george.down()
-    drawgrid()
-    global xturn=True
-    s.onclick(handleclick)
-    
+
 def fgup(x,y):
     fred.up()
     george.up()
@@ -118,6 +123,7 @@ def fredgoinvis(x,y):
 def handleclick(x,y):
     cellx=0
     celly=0
+    global xturn
     if (x > -200) & (x < -100):
         cellx=1
     elif (x > -100) & (x < 0):
@@ -130,7 +136,13 @@ def handleclick(x,y):
         celly=2
     elif (y>-250) & (y<-150):
         celly=3
-    drawxo('X',cellx,celly)
+    if (x > -200) & (x < 100) & (y > -250) & (y < 50):
+        if xturn == True:
+            drawxo('X',cellx,celly)
+            xturn = False
+        else:
+            drawxo('O',cellx,celly)
+            xturn = True    
     
 def drawxo(letter,cellx,celly):
     if cellx==1:
