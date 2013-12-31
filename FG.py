@@ -7,9 +7,10 @@ def fgclear():
     fred.clear()
     george.clear()
     
-def fgreset():
+def fgr():
     fred.reset()
     george.reset()
+    main()
     
 def fgleft(angle):
     fred.left(angle)
@@ -46,14 +47,17 @@ def fgmv(x,y):
     fred.down()
     
 def main():
-    fred.color("purple")
-    george.color("green")
+    fred.color("green")
+    george.color("purple")
+    fred.shape("turtle")
+    george.shape("turtle")
     fred.up()
     george.up()
     fred.goto(20,20)
     george.goto(0,0)
     fred.down()
     george.down()
+    drawgrid()
     
 def fgup(x,y):
     fred.up()
@@ -69,10 +73,13 @@ def fgup(x,y):
     fred.down()
     george.down()
     
-def mygrid():
+def drawgrid():
     fred.color("green")
     fred.shape("turtle")
+    fred.pensize(5)
+    fred.up()
     fred.goto(0,50)
+    fred.down()
     fred.goto(0,-50)
     fred.goto(100,-50)
     fred.goto(-200,-50)
@@ -85,8 +92,7 @@ def mygrid():
     fred.goto(100,-150)
     fred.goto(00,-150)
     fred.goto(00,-50)
-    fred.goto(00,-250)
-         
+    fred.goto(00,-250)         
 
 def makeX(x,y):
     fred.up()
@@ -97,10 +103,34 @@ def makeX(x,y):
     fred.fd(-35)
     fred.fd(35)
     fred.right
-
+    
+def fredgoinvis(x,y):
+    fred.up()
+    fred.goto(x,y)
+    fred.down()
+    
+def drawxo(letter,cellx,celly):
+    if cellx==1:
+        xpos=-150
+    elif cellx==2:
+        xpos=-50
+    elif cellx==3:
+        xpos=50
+    if celly==1:
+        ypos=-50
+    elif celly==2:
+        ypos=-150
+    elif celly==3:
+        ypos=-250    
+    george.up()
+    george.goto(xpos,ypos)
+    george.down()
+    george.write(letter, move = False, align='center', font=('Gill Sans', 60, 'normal'))
     
 if __name__ == "__main__":
     import turtle
+    s=turtle.Screen()
+    s.clearscreen()
     fred = turtle.Turtle()
     george = turtle.Turtle()
     main()
