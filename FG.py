@@ -47,6 +47,10 @@ def fgmv(x,y):
     fred.down()
     
 def main():
+    s=turtle.Screen()
+    s.clearscreen()
+    fred = turtle.Turtle()
+    george = turtle.Turtle()
     fred.color("green")
     george.color("purple")
     fred.shape("turtle")
@@ -58,6 +62,8 @@ def main():
     fred.down()
     george.down()
     drawgrid()
+    global xturn=True
+    s.onclick(handleclick)
     
 def fgup(x,y):
     fred.up()
@@ -109,6 +115,23 @@ def fredgoinvis(x,y):
     fred.goto(x,y)
     fred.down()
     
+def handleclick(x,y):
+    cellx=0
+    celly=0
+    if (x > -200) & (x < -100):
+        cellx=1
+    elif (x > -100) & (x < 0):
+        cellx=2
+    elif (x > 0) & (x < 100):
+        cellx=3
+    if (y>-50) & (y<50):
+        celly=1
+    elif (y>-150) & (y<-50):
+        celly=2
+    elif (y>-250) & (y<-150):
+        celly=3
+    drawxo('X',cellx,celly)
+    
 def drawxo(letter,cellx,celly):
     if cellx==1:
         xpos=-150
@@ -129,9 +152,5 @@ def drawxo(letter,cellx,celly):
     
 if __name__ == "__main__":
     import turtle
-    s=turtle.Screen()
-    s.clearscreen()
-    fred = turtle.Turtle()
-    george = turtle.Turtle()
     main()
     
