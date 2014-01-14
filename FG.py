@@ -105,6 +105,18 @@ def drawgrid():
     fred.goto(00,-50)
     fred.goto(00,-250)         
 
+def xwins():
+    fred.up()
+    fred.goto(-50,150)
+    fred.down()
+    fred.write("X Wins!!", move = False, align='center', font=('Gill Sans', 60, 'normal'))
+    
+def owins():
+    fred.up()
+    fred.goto(-50,150)
+    fred.down()
+    fred.write("O Wins!!", move = False, align='center', font=('Gill Sans', 60, 'normal'))
+
 def makeX(x,y):
     fred.up()
     fred.goto(x,y)
@@ -115,10 +127,15 @@ def makeX(x,y):
     fred.fd(35)
     fred.right
     
-def fredgoinvis(x,y):
+def fredinvis(x,y):
     fred.up()
     fred.goto(x,y)
     fred.down()
+    
+def georgeinvis(x,y):
+    george.up()
+    george.goto(x,y)
+    george.down()
     
 def handleclick(x,y):
     cellx=0
